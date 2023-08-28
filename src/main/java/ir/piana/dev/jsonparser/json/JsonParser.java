@@ -37,6 +37,10 @@ public class JsonParser {
         this.converterProvider = converterProvider;
     }
 
+    public JsonTarget fromJson(JsonObject json) {
+        return new JsonCrawler(json, this);
+    }
+
     public JsonTarget fromJson(Object json, boolean throwIfNotValid) {
         JsonObject rootObject = null;
         JsonArray rootArray = null;
