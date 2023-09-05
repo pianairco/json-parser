@@ -188,7 +188,9 @@ public class JsonParser {
     protected JsonTarget createJsonTarget(JsonObject rootObject, JsonArray rootArray,
                                           String targetFieldByItsValidationCommands,
                                           Object... others) {
-        if (Objects.isNull(targetFieldByItsValidationCommands)) {
+        if (Objects.isNull(targetFieldByItsValidationCommands) ||
+                targetFieldByItsValidationCommands.isEmpty() ||
+                targetFieldByItsValidationCommands.isBlank()) {
             return new JsonCrawler(
                     Objects.isNull(rootArray) ? rootObject : rootArray, this);
         }
